@@ -14,7 +14,7 @@
         eprint = "2607.XXXXX",
         archivePrefix = "arXiv",
         primaryClass = "astro-ph.HE",
-        reportNumber = "INR-TH-2024-023",
+        reportNumber = "INR-TH-2026-XXX",
         % doi = "N/A",
         % journal = "submitted to Phys. Rev. D",
         % volume = "N/A",
