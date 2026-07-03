@@ -6,8 +6,11 @@
 *b.&nbsp;Institute for&nbsp;Nuclear Research of&nbsp;the&nbsp;Russian Academy of&nbsp;Sciences, 60th&nbsp;October Anniversary Prospect&nbsp;7a, Moscow&nbsp;117312, Russia*
 
     @article{Martynenko:2026,
-        author = "Martynenko, Nickolay S. and Rubtsov, Grigory I. and Satunin, Petr S. and Sharofeev, Andrey K. and Troitsky, Sergey V.",
-        title = "{Constraining Lorentz invariance violation with the depth of shower maximum}",
+        author = "Martynenko, Nickolay S. and Rubtsov, 
+                  Grigory I. and Satunin, Petr S. and 
+                  Sharofeev, Andrey K. and Troitsky, Sergey V.",
+        title = "{Constraining Lorentz invariance 
+                  violation with the depth of shower maximum}",
         eprint = "2607.XXXXX",
         archivePrefix = "arXiv",
         primaryClass = "astro-ph.HE",
