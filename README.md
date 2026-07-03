@@ -20,7 +20,7 @@
         % volume = "N/A",
         % number = "N/A",
         % pages = "N/A",
-        year = "2025"
+        year = "2026"
     }
 
 ---
