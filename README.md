@@ -1,5 +1,5 @@
 # Testing Lorentz invariance violation with the Pierre Auger Fluorescence-detector Data
-*Nickolay&nbsp;S.&nbsp;Martynenko<sup>&nbsp;a,&nbsp;b</sup>, Grigory&nbsp;I.&nbsp;Rubtsov<sup>&nbsp;b,&nbsp;a</sup>, Petr&nbsp;S.&nbsp;Satunin<sup>&nbsp;b,&nbsp;a</sup>, Andrey&nbsp;K.&nbsp;Sharofeev<sup>&nbsp;a,&nbsp;b</sup> [^mail], Sergey&nbsp;V.&nbsp;Troitsky<sup>&nbsp;b,&nbsp;a</sup>*
+*Nickolay&nbsp;S.&nbsp;Martynenko<sup>&nbsp;a,&nbsp;b</sup> [^mail], Grigory&nbsp;I.&nbsp;Rubtsov<sup>&nbsp;b,&nbsp;a</sup>, Petr&nbsp;S.&nbsp;Satunin<sup>&nbsp;b,&nbsp;a</sup>, Andrey&nbsp;K.&nbsp;Sharofeev<sup>&nbsp;a,&nbsp;b</sup>, Sergey&nbsp;V.&nbsp;Troitsky<sup>&nbsp;b,&nbsp;a</sup>*
 
 *a.&nbsp;Lomonosov Moscow State University, 1-2&nbsp;Leninskie Gory, Moscow&nbsp;119991, Russia*
 
@@ -23,7 +23,9 @@
         year = "2026"
     }
 
+[^mail]: Corresponding author, e-mail: [martynenko@inr.ac.ru](mailto:martynenko@inr.ac.ru)
 ---
+
 
 This repository contains auxiliary material for the manuscript on testing Lorentz invariance violation with reconstructed shower-maximum distributions measured by the Pierre Auger Observatory fluorescence detector.
 
