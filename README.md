@@ -1,9 +1,9 @@
 # Testing Lorentz invariance violation with the Pierre Auger Fluorescence-detector Data
-*Nickolay&nbsp;S.&nbsp;Martynenko<sup>&nbsp;a,&nbsp;b</sup> [^mail], Grigory&nbsp;I.&nbsp;Rubtsov<sup>&nbsp;b,&nbsp;a</sup>, Petr&nbsp;S.&nbsp;Satunin<sup>&nbsp;b,&nbsp;a</sup>, Andrey&nbsp;K.&nbsp;Sharofeev<sup>&nbsp;a,&nbsp;b</sup>, Sergey&nbsp;V.&nbsp;Troitsky<sup>&nbsp;b,&nbsp;a</sup>*
+*Nickolay&nbsp;S.&nbsp;Martynenko<sup>&nbsp;1,&nbsp;2,&nbsp;\*</sup>, Grigory&nbsp;I.&nbsp;Rubtsov<sup>&nbsp;2,&nbsp;1</sup>, Petr&nbsp;S.&nbsp;Satunin<sup>&nbsp;2,&nbsp;1</sup>, Andrey&nbsp;K.&nbsp;Sharofeev<sup>&nbsp;1,&nbsp;2</sup>, Sergey&nbsp;V.&nbsp;Troitsky<sup>&nbsp;2,&nbsp;1</sup>
 
-*a.&nbsp;Lomonosov Moscow State University, 1-2&nbsp;Leninskie Gory, Moscow&nbsp;119991, Russia*
-
-*b.&nbsp;Institute for&nbsp;Nuclear Research of&nbsp;the&nbsp;Russian Academy of&nbsp;Sciences, 60th&nbsp;October Anniversary Prospect&nbsp;7a, Moscow&nbsp;117312, Russia*
+<sup>1</sup>&nbsp;Lomonosov Moscow State University, 1-2&nbsp;Leninskie Gory, Moscow&nbsp;119991, Russia<br>
+<sup>2</sup>&nbsp;Institute for&nbsp;Nuclear Research of&nbsp;the&nbsp;Russian Academy of&nbsp;Sciences, 60th&nbsp;October Anniversary Prospect&nbsp;7a, Moscow&nbsp;117312, Russia<br>
+<sup>*</sup>&nbsp;Corresponding author: [martynenko@inr.ac.ru](mailto:martynenko@inr.ac.ru)
 
     @article{Martynenko:2026,
         author = "Martynenko, Nickolay S. and Rubtsov, 
