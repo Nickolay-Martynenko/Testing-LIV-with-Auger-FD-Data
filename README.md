@@ -36,23 +36,23 @@ import numpy as np
 dataset = np.load("data/dataset.npy").view(np.recarray)
 ```
 
-Schema:
+Schema  (`N_MC = 9 (epsilon) × 5 (eta) × 5 (Y) × 1024 (events) = 414720`) :
 
 | Field | Shape | Description | Notation |
 |---|---:|---|---|
-| `event.epsilon` | `(414720,)` | true primary energy variable | $\epsilon\equiv\log_{10}\left[E/10^{19}\text{eV}\right]$ |
-| `event.Y` | `(414720,)` | mass variable | $Y\equiv\ln(A)$ |
-| `event.eta` | `(414720,)` | LIV-scale variable | $\eta\equiv\log_{10}\left[(m_e M_{\rm LIV})^{1/2}/10^{19}\text{eV}\right]$ |
-| `event.zeta` | `(414720,)` | combined energy–mass–LIV variable | $\zeta\equiv\epsilon-\eta-Y/\ln(10)$ |
-| `profile.depth` | `(414720, 200)` | slant depth [g cm<sup>-2</sup>] | $X$ |
-| `profile.e_dep` | `(414720, 200)` | deposited energy [GeV g<sup>-1</sup> cm<sup>2</sup>] | ${\rm d}E_{\rm dep} / {\rm d}X$ |
-| `fit_inputs.fluctuated_e_dep` | `(414720, 200)` | fluctuated deposited energy [GeV g<sup>-1</sup> cm<sup>2</sup>] | $\left({\rm d}E_{\rm dep} / {\rm d}X\right)_d$ |
-| `fit_inputs.sqroot_var_e_dep` | `(414720, 200)` | (fluctuations variance)<sup>1/2</sup> [GeV g<sup>-1</sup> cm<sup>2</sup>]  | ${\rm Var}\left[{\rm d}E_{\rm dep} / {\rm d}X\right]^{1/2}$ |
-| `fit_outputs.epsilon_cal` | `(414720,)` | fitted calorimetric-energy variable | $\epsilon_{\rm cal}\equiv\log_{10}\left[E_{\rm cal}/10^{19}\text{eV}\right]$ |
-| `fit_outputs.depth_max` | `(414720,)` | fitted shower maximum [g cm<sup>-2</sup>]  | $X_{\max}$ |
-| `fit_outputs.shape_r` | `(414720,)` | fitted profile shape parameter | $R$ |
-| `fit_outputs.shape_l` | `(414720,)` | fitted profile shape parameter [g cm<sup>-2</sup>] | $L$ |
-| `fit_outputs.success` | `(414720,)` | fit convergence flag | N/A |
+| `event.epsilon` | `(N_MC,)` | true primary energy variable | $\epsilon\equiv\log_{10}\left[E/10^{19}\text{eV}\right]$ |
+| `event.Y` | `(N_MC,)` | mass variable | $Y\equiv\ln(A)$ |
+| `event.eta` | `(N_MC,)` | LIV-scale variable | $\eta\equiv\log_{10}\left[(m_e M_{\rm LIV})^{1/2}/10^{19}\text{eV}\right]$ |
+| `event.zeta` | `(N_MC,)` | combined energy–mass–LIV variable | $\zeta\equiv\epsilon-\eta-Y/\ln(10)$ |
+| `profile.depth` | `(N_MC, 200)` | slant depth [g cm<sup>-2</sup>] | $X$ |
+| `profile.e_dep` | `(N_MC, 200)` | deposited energy [GeV g<sup>-1</sup> cm<sup>2</sup>] | ${\rm d}E_{\rm dep} / {\rm d}X$ |
+| `fit_inputs.fluctuated_e_dep` | `(N_MC, 200)` | fluctuated deposited energy [GeV g<sup>-1</sup> cm<sup>2</sup>] | $\left({\rm d}E_{\rm dep} / {\rm d}X\right)_d$ |
+| `fit_inputs.sqroot_var_e_dep` | `(N_MC, 200)` | (fluctuations variance)<sup>1/2</sup> [GeV g<sup>-1</sup> cm<sup>2</sup>]  | ${\rm Var}\left[{\rm d}E_{\rm dep} / {\rm d}X\right]^{1/2}$ |
+| `fit_outputs.epsilon_cal` | `(N_MC,)` | fitted calorimetric-energy variable | $\epsilon_{\rm cal}\equiv\log_{10}\left[E_{\rm cal}/10^{19}\text{eV}\right]$ |
+| `fit_outputs.depth_max` | `(N_MC,)` | fitted shower maximum [g cm<sup>-2</sup>]  | $X_{\max}$ |
+| `fit_outputs.shape_r` | `(N_MC,)` | fitted profile shape parameter | $R$ |
+| `fit_outputs.shape_l` | `(N_MC,)` | fitted profile shape parameter [g cm<sup>-2</sup>] | $L$ |
+| `fit_outputs.success` | `(N_MC,)` | fit convergence flag | N/A |
 
 ### `data/binned_probas.npz`
 
