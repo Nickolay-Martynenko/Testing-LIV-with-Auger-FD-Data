@@ -27,7 +27,7 @@ To work with the datasets, you will need:
 | `data/binned_probas.npz` | `.npz` archive | Forward-folded Auger-bin probabilities |
 | `data/likelihood_ratio_test.npy` | structured `.npy` | Likelihood-ratio scan and mock calibration |
 
-### `data/dataset.npy`
+- ### `data/dataset.npy`
 
 Load:
 
@@ -36,7 +36,7 @@ import numpy as np
 dataset = np.load("data/dataset.npy").view(np.recarray)
 ```
 
-Schema  (`N_MC = 9 (epsilon) × 5 (eta) × 5 (Y) × 1024 (events) = 414720`) :
+Schema  (`N_MC = 9 (epsilon) × 5 (Y) × 5 (eta) × 1024 (showers) = 414720`) :
 
 | Field | Shape | Description | Notation |
 |---|---:|---|---|
@@ -54,7 +54,7 @@ Schema  (`N_MC = 9 (epsilon) × 5 (eta) × 5 (Y) × 1024 (events) = 414720`) :
 | `fit_outputs.shape_l` | `(N_MC,)` | fitted profile shape parameter [g cm<sup>-2</sup>] | $L$ |
 | `fit_outputs.success` | `(N_MC,)` | fit convergence flag | N/A |
 
-### `data/binned_probas.npz`
+- ### `data/binned_probas.npz`
 
 Load:
 
@@ -83,7 +83,7 @@ Contents:
 
 The `eta` grid includes the Lorentz-invariant limit, represented by the final entry `eta[-1] = +∞` (`np.inf` when loaded in Python).
 
-### `data/likelihood_ratio_test.npy`
+- ### `data/likelihood_ratio_test.npy`
 
 Load:
 
