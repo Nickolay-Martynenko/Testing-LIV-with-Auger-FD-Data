@@ -21,11 +21,11 @@ To work with the datasets, you will need:
 
 ## Files
 
-| File | Format | Content |
-|---|---|---|
-| `data/dataset.npy` | structured `.npy` | Preprocessed CONEX shower table and Gaisser–Hillas fit results |
-| `data/binned_probas.npz` | `.npz` archive | Forward-folded Auger-bin probabilities |
-| `data/likelihood_ratio_test.npy` | structured `.npy` | Likelihood-ratio scan and mock calibration |
+| File | Content |
+|---|---|
+| `data/dataset.npy` | Preprocessed CONEX shower table and Gaisser–Hillas fit results |
+| `data/binned_probas.npz` |  Forward-folded Auger-bin probabilities |
+| `data/likelihood_ratio_test.npy` | Likelihood-ratio scan and mock calibration |
 
 ### `data/dataset.npy`
 
