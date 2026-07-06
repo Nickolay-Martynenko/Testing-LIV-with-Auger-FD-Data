@@ -27,7 +27,7 @@ To work with the datasets, you will need:
 | `data/binned_probas.npz` | `.npz` archive | Forward-folded Auger-bin probabilities |
 | `data/likelihood_ratio_test.npy` | structured `.npy` | Likelihood-ratio scan and mock calibration |
 
-- ### `data/dataset.npy`
+### `data/dataset.npy`
 
 Load:
 
@@ -36,25 +36,34 @@ import numpy as np
 dataset = np.load("data/dataset.npy").view(np.recarray)
 ```
 
-Schema  (`N_MC = 9 (epsilon) × 5 (Y) × 5 (eta) × 1024 (showers) = 414720`) :
+Schema:
 
-| Field | Shape | Description | Notation |
-|---|---:|---|---|
-| `event.epsilon` | `(N_MC,)` | true primary energy variable | $\epsilon\equiv\log_{10}\left[E/10^{19}\text{eV}\right]$ |
-| `event.Y` | `(N_MC,)` | mass variable | $Y\equiv\ln(A)$ |
-| `event.eta` | `(N_MC,)` | LIV-scale variable | $\eta\equiv\log_{10}\left[(m_e M_{\rm LIV})^{1/2}/10^{19}\text{eV}\right]$ |
-| `event.zeta` | `(N_MC,)` | combined energy–mass–LIV variable | $\zeta\equiv\epsilon-\eta-Y/\ln(10)$ |
-| `profile.depth` | `(N_MC, 200)` | slant depth [g cm<sup>-2</sup>] | $X$ |
-| `profile.e_dep` | `(N_MC, 200)` | deposited energy [GeV g<sup>-1</sup> cm<sup>2</sup>] | ${\rm d}E_{\rm dep} / {\rm d}X$ |
-| `fit_inputs.fluctuated_e_dep` | `(N_MC, 200)` | fluctuated deposited energy [GeV g<sup>-1</sup> cm<sup>2</sup>] | $\left({\rm d}E_{\rm dep} / {\rm d}X\right)_d$ |
-| `fit_inputs.sqroot_var_e_dep` | `(N_MC, 200)` | (fluctuations variance)<sup>1/2</sup> [GeV g<sup>-1</sup> cm<sup>2</sup>]  | ${\rm Var}\left[{\rm d}E_{\rm dep} / {\rm d}X\right]^{1/2}$ |
-| `fit_outputs.epsilon_cal` | `(N_MC,)` | fitted calorimetric-energy variable | $\epsilon_{\rm cal}\equiv\log_{10}\left[E_{\rm cal}/10^{19}\text{eV}\right]$ |
-| `fit_outputs.depth_max` | `(N_MC,)` | fitted shower maximum [g cm<sup>-2</sup>]  | $X_{\max}$ |
-| `fit_outputs.shape_r` | `(N_MC,)` | fitted profile shape parameter | $R$ |
-| `fit_outputs.shape_l` | `(N_MC,)` | fitted profile shape parameter [g cm<sup>-2</sup>] | $L$ |
-| `fit_outputs.success` | `(N_MC,)` | fit convergence flag | N/A |
+```text
+dataset: (414720,)
 
-- ### `data/binned_probas.npz`
+event:
+  epsilon  (414720,)       true primary energy variable
+  Y        (414720,)       mass variable, ln(A)
+  eta      (414720,)       LIV-scale variable
+  zeta     (414720,)       combined energy–mass–LIV variable
+
+profile:
+  depth    (414720, 200)   slant depth [g cm^-2]
+  e_dep    (414720, 200)   deposited energy [GeV g^-1 cm^2]
+
+fit_inputs:
+  fluctuated_e_dep  (414720, 200)   fluctuated deposited energy [GeV g^-1 cm^2]
+  sqroot_var_e_dep  (414720, 200)   square root of profile-point variance [GeV g^-1 cm^2]
+
+fit_outputs:
+  epsilon_cal  (414720,)   fitted calorimetric-energy variable
+  depth_max    (414720,)   fitted shower maximum [g cm^-2]
+  shape_r      (414720,)   fitted Gaisser–Hillas shape parameter R
+  shape_l      (414720,)   fitted Gaisser–Hillas shape parameter L [g cm^-2]
+  success      (414720,)   fit convergence flag
+```
+
+### `data/binned_probas.npz`
 
 Load:
 
@@ -65,25 +74,35 @@ binned = np.load("data/binned_probas.npz")
 
 Contents:
 
-| Array[.field] | Shape | Description |
-|---|---:|---|
-| `eta` | `(2002,)` | tested LIV-scale grid |
-| `Y` | `(4,)` | fitted mass-group grid: ${}^{1}{\rm H}$, ${}^{4}{\rm He}$, ${}^{14}{\rm N}$, ${}^{56}{\rm Fe}$ |
-| `depth_max_reco_bins.left` | `(100,)` | $X_{\max,\rm reco}$ bins, left edges [g cm<sup>-2</sup>] |
-| `depth_max_reco_bins.right` | `(100,)` | $X_{\max,\rm reco}$ bins, right edges [g cm<sup>-2</sup>] |
-| `epsilon_reco_bins.left` | `(20,)` | $\epsilon_{\rm reco}$ bins, left edges|
-| `epsilon_reco_bins.right` | `(20,)` | $\epsilon_{\rm reco}$ bins, right edges |
-| `epsilon_reco_bins.slope` | `(20,)` | $\epsilon_{\rm reco}$ bins, local power-law slope |
-| `counts` | `(20, 100)` |  Auger binned $X_{\max,\rm reco}$ counts |
-| `probas.val` | `(2002, 20, 4, 100)` | forward-folded bin probabilities |
-| `probas.err.model` | `(2002, 20, 4, 100)` | uncertainties of bin probabilities (model) |
-| `probas.err.detector` | `(2002, 20, 4, 100)` | uncertainties of bin probabilities (detector response) |
-| `probas.err.integration` | `(2002, 20, 4, 100)` | uncertainties of bin probabilities (integration) |
-| `probas.err.total` | `(2002, 20, 4, 100)` | uncertainties of bin probabilities (total) |
+```text
+eta: (2002,)
+  tested LIV-scale grid
+  eta[-1] = +∞ is the Lorentz-invariant limit
 
-The `eta` grid includes the Lorentz-invariant limit, represented by the final entry `eta[-1] = +∞` (`np.inf` when loaded in Python).
+Y: (4,)
+  fitted mass-group grid: H, He, N, Fe
 
-- ### `data/likelihood_ratio_test.npy`
+depth_max_reco_bins: (100,)
+  left   (100,)   Xmax,reco bin left edges [g cm^-2]
+  right  (100,)   Xmax,reco bin right edges [g cm^-2]
+
+epsilon_reco_bins: (20,)
+  left   (20,)   epsilon_reco bin left edges
+  right  (20,)   epsilon_reco bin right edges
+  slope  (20,)   local power-law slope inside the bin
+
+counts: (20, 100)
+  Auger binned Xmax,reco counts
+
+probas: (2002, 20, 4, 100)
+  val              forward-folded bin probabilities
+  err.model        model uncertainty
+  err.detector     detector-response uncertainty
+  err.integration  numerical-integration uncertainty
+  err.total        total uncertainty
+```
+
+### `data/likelihood_ratio_test.npy`
 
 Load:
 
@@ -92,20 +111,33 @@ import numpy as np
 scan = np.load("data/likelihood_ratio_test.npy").view(np.recarray)
 ```
 
-
 Schema:
 
-| Field | Shape | Description |
-|---|---:|---|
-| `eta` | `(201,)` | tested LIV-scale grid |
-| `hat_F` | `(201, 20, 4)` | fitted composition fractions |
-| `D_obs` | `(201,)` | observed likelihood-ratio statistic |
-| `D_mock` | `(201, 10000)` | mock-data-set statistic values |
-| `p_value.val` | `(201,)` | calibrated p-value |
-| `p_value.err` | `(201,)` | estimated p-value uncertainty |
-| `p_value.reliable` | `(201,)` | p-value reliability flag<sup>**</sup> |
+```text
+scan: (201,)
 
-<sup>**</sup> If `False`, the p-value is saturated by the finite mock sample: no mock data set generated under the tested LIV hypothesis produced a statistic at least as large as the observed one.
+eta: (201,)
+  tested LIV-scale grid
+
+hat_F: (201, 20, 4)
+  fitted composition fractions
+
+D_obs: (201,)
+  observed likelihood-ratio statistic
+
+D_mock: (201, 10000)
+  mock-data-set statistic values
+
+p_value:
+  val       (201,)   calibrated p-value
+  err       (201,)   estimated p-value uncertainty
+  reliable  (201,)   reliability flag (if `False`,
+                     the p-value is saturated by the
+                     finite mock sample: no mock data
+                     set generated under the tested
+                     LIV hypothesis produced a statistic
+                     at least as large as the observed one)
+```
 
 
 ## Physics scope
