@@ -1,11 +1,12 @@
 # Testing Lorentz invariance violation with the Pierre Auger fluorescence-detector data
-Nickolay&nbsp;S.&nbsp;Martynenko<sup>&nbsp;1,&nbsp;2,&nbsp;\*</sup>, Grigory&nbsp;I.&nbsp;Rubtsov<sup>&nbsp;2,&nbsp;1</sup>, Petr&nbsp;S.&nbsp;Satunin<sup>&nbsp;2,&nbsp;1</sup>, Andrey&nbsp;K.&nbsp;Sharofeev<sup>&nbsp;1,&nbsp;2</sup>, Sergey&nbsp;V.&nbsp;Troitsky<sup>&nbsp;2,&nbsp;1</sup>
+Nickolay&nbsp;S.&nbsp;Martynenko<sup>&nbsp;1,&nbsp;2,&nbsp;\*</sup>, Grigory&nbsp;I.&nbsp;Rubtsov<sup>&nbsp;2</sup>, Petr&nbsp;S.&nbsp;Satunin<sup>&nbsp;2,&nbsp;1,&nbsp;3</sup>, Andrey&nbsp;K.&nbsp;Sharofeev<sup>&nbsp;1,&nbsp;2</sup>, Sergey&nbsp;V.&nbsp;Troitsky<sup>&nbsp;2,&nbsp;1</sup>
 
 <sup>1</sup>&nbsp;Lomonosov Moscow State University, 1-2&nbsp;Leninskie Gory, Moscow&nbsp;119991, Russia<br>
 <sup>2</sup>&nbsp;Institute for&nbsp;Nuclear Research of&nbsp;the&nbsp;Russian Academy of&nbsp;Sciences, 60th&nbsp;October Anniversary Prospect&nbsp;7a, Moscow&nbsp;117312, Russia<br>
-<sup>*</sup>&nbsp;Corresponding author: [martynenko@inr.ac.ru](mailto:martynenko@inr.ac.ru)
+<sup>3</sup>&nbsp;Branch of Lomonosov Moscow State University in Sarov, Parkovaya&nbsp;2, Sarov&nbsp;607328, Russia<br>
+<sup>*</sup>&nbsp;Corresponding author: [martynenko@inr.ac.ru](mailto:martynenko@inr.ac.ru?subject=arXiv:2608.05106)
 
-Public NumPy data products for the study *Constraining Lorentz invariance violation with the depth of shower maximum*.
+Public NumPy data products for the study *Constraining Lorentz invariance violation from the depth of air-shower maximum*.
 
 This repository provides processed simulation tables, forward-folded probability tables, and likelihood-scan outputs for a toy-model sensitivity study of subluminal photon-sector Lorentz invariance violation (LIV) using Pierre Auger fluorescence-detector reconstructed shower-maximum distributions.
 
@@ -150,17 +151,17 @@ If you use these data products, cite:
 
     @article{Martynenko2026LIVAugerFD,
       title         = {Constraining Lorentz invariance violation 
-                       with the depth of shower maximum},
+                       from the depth of air-shower maximum},
       author        = {Martynenko, Nickolay S. and 
                        Rubtsov, Grigory I. and 
                        Satunin, Petr S. and 
                        Sharofeev, Andrey K. and 
                        Troitsky, Sergey V.},
       year          = {2026},
-      eprint        = {2607.XXXXX},
+      eprint        = {2608.05106},
       archivePrefix = {arXiv},
-      reportNumber  = {INR-TH-2026-XXX},
-      note          = {Submitted to Physical Review D}
+      reportNumber  = {INR-TH-2026-007},
+      note          = {16 pages, 4 figures. Submitted to Physical Review D}
     }
 
 ## License
