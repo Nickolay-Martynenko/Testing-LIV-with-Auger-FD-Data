@@ -81,7 +81,7 @@ eta: (2002,)
   eta[-1] = +∞ is the Lorentz-invariant limit
 
 Y: (4,)
-  fitted mass-group grid: H, He, N, Fe
+  fitted mass-group grid: H(1,1), He(4,2), N(14, 7), Fe(56,26)
 
 depth_max_reco_bins: (100,)
   left   (100,)   Xmax,reco bin left edges [g cm^-2]
