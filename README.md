@@ -24,13 +24,20 @@ To work with the datasets, you will need:
 
 | File | Content |
 |---|---|
-| `data/dataset.npy` | Preprocessed CONEX shower table and Gaisser–Hillas fit results |
+| `data/dataset.npy.gz` | Preprocessed CONEX shower table and Gaisser–Hillas fit results |
 | `data/binned_probas.npz` |  Forward-folded Auger-bin probabilities |
 | `data/likelihood_ratio_test.npy` | Likelihood-ratio scan and mock calibration |
+| [`data/LeadingTree.md`](data/LeadingTree.md) | Source link for the proton-shower leading-interaction tree dataset |
 
-### `data/dataset.npy`
+### `data/dataset.npy.gz`
 
-Load:
+The simulation grid contains 14 finite LIV scales, `log10(M_LIV / GeV) = 11, 12, …, 24`, and the Lorentz-invariant limit. Each of the 15 settings contains 46,080 showers.
+
+Unpack the original NumPy file, then load it.
+
+```sh
+gzip -dc data/dataset.npy.gz > data/dataset.npy
+```
 
 ```python
 import numpy as np
@@ -40,28 +47,28 @@ dataset = np.load("data/dataset.npy").view(np.recarray)
 Schema:
 
 ```text
-dataset: (414720,)
+dataset: (691200,)
 
 event:
-  epsilon  (414720,)       true primary energy variable
-  Y        (414720,)       mass variable, ln(A)
-  eta      (414720,)       LIV-scale variable
-  zeta     (414720,)       combined energy–mass–LIV variable
+  epsilon  (691200,)       true primary energy variable
+  Y        (691200,)       mass variable, ln(A)
+  eta      (691200,)       LIV-scale variable
+  zeta     (691200,)       combined energy–mass–LIV variable
 
 profile:
-  depth    (414720, 200)   slant depth [g cm^-2]
-  e_dep    (414720, 200)   deposited energy [GeV g^-1 cm^2]
+  depth    (691200, 200)   slant depth [g cm^-2]
+  e_dep    (691200, 200)   deposited energy [GeV g^-1 cm^2]
 
 fit_inputs:
-  fluctuated_e_dep  (414720, 200)   fluctuated deposited energy [GeV g^-1 cm^2]
-  sqroot_var_e_dep  (414720, 200)   square root of profile-point variance [GeV g^-1 cm^2]
+  fluctuated_e_dep  (691200, 200)   fluctuated deposited energy [GeV g^-1 cm^2]
+  sqroot_var_e_dep  (691200, 200)   square root of profile-point variance [GeV g^-1 cm^2]
 
 fit_outputs:
-  epsilon_cal  (414720,)   fitted calorimetric-energy variable
-  depth_max    (414720,)   fitted shower maximum [g cm^-2]
-  shape_r      (414720,)   fitted Gaisser–Hillas shape parameter R
-  shape_l      (414720,)   fitted Gaisser–Hillas shape parameter L [g cm^-2]
-  success      (414720,)   fit convergence flag
+  epsilon_cal  (691200,)   fitted calorimetric-energy variable
+  depth_max    (691200,)   fitted shower maximum [g cm^-2]
+  shape_r      (691200,)   fitted Gaisser–Hillas shape parameter R
+  shape_l      (691200,)   fitted Gaisser–Hillas shape parameter L [g cm^-2]
+  success      (691200,)   fit convergence flag
 ```
 
 ### `data/binned_probas.npz`
@@ -76,7 +83,7 @@ binned = np.load("data/binned_probas.npz")
 Contents:
 
 ```text
-eta: (2002,)
+eta: (142,)
   tested LIV-scale grid
   eta[-1] = +∞ is the Lorentz-invariant limit
 
@@ -92,10 +99,11 @@ epsilon_reco_bins: (20,)
   right  (20,)   epsilon_reco bin right edges
   slope  (20,)   local power-law slope inside the bin
 
-counts: (20, 100)
-  Auger binned Xmax,reco counts
+counts: (100, 20)
+  Auger counts ordered by reconstructed Xmax and then reconstructed energy
 
-probas: (2002, 20, 4, 100)
+probas: (142, 100, 20, 4)
+  axes: eta, reconstructed Xmax, reconstructed energy, mass group
   val              forward-folded bin probabilities
   err.model        model uncertainty
   err.detector     detector-response uncertainty
@@ -115,24 +123,24 @@ scan = np.load("data/likelihood_ratio_test.npy").view(np.recarray)
 Schema:
 
 ```text
-scan: (201,)
+scan: (141,)
 
-eta: (201,)
+eta: (141,)
   tested LIV-scale grid
 
-hat_F: (201, 20, 4)
+hat_F: (141, 20, 4)
   fitted composition fractions
 
-D_obs: (201,)
+D_obs: (141,)
   observed likelihood-ratio statistic
 
-D_mock: (201, 10000)
-  mock-data-set statistic values
+D_mock: (141, 10000)
+  mock-data-set statistic values corrected for residuals in the simulated Xmax CDF
 
 p_value:
-  val       (201,)   calibrated p-value
-  err       (201,)   estimated p-value uncertainty
-  reliable  (201,)   reliability flag (if `False`,
+  val       (141,)   calibrated p-value
+  err       (141,)   estimated p-value uncertainty
+  reliable  (141,)   reliability flag (if `False`,
                      the p-value is saturated by the
                      finite mock sample: no mock data
                      set generated under the tested
